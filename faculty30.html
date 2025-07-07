@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Portfolio -BONDADA SAVITHRI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: rgb(157, 34, 53);
+            --secondary: #f9f9f9;
+            --accent: #f0f3f5;
+            --light: #f6f8fc;
+            --dark: #1a1a1a;
+            --gray: #555;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #8d1e38 100%);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: white;
+            font-size: 1.8rem;
+            z-index: 110;
+            transition: var(--transition);
+        }
+
+        .hamburger:hover {
+            color: var(--accent);
+        }
+
+        /* Faculty Profile Section */
+        .faculty-profile {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-left {
+            flex: 1;
+            min-width: 300px;
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .profile-right {
+            flex: 1;
+            min-width: 300px;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .profile-img {
+            width: 80%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+            border: 5px solid var(--primary);
+        }
+
+        .profile-img img {
+            width: 100%;
+            display: block;
+            transition: var(--transition);
+            background: linear-gradient(45deg, #8d1e38, #5a1327);
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .profile-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .profile-name {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .education {
+            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s;
+            animation-fill-mode: backwards;
+            border-left: 4px solid var(--primary);
+        }
+
+        .education h2 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .education h2 i {
+            margin-right: 0.8rem;
+            color: var(--accent);
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .education-item h3 {
+            color: var(--dark);
+            font-size: 1.3rem;
+        }
+
+        .education-item p {
+            color: var(--gray);
+            margin-top: 0.5rem;
+        }
+
+        /* Resume Button */
+        .resume-btn-container {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .btn-resume {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(157, 34, 53, 0.3);
+        }
+
+        .btn-resume::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn-resume:hover {
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(157, 34, 53, 0.4);
+        }
+
+        .btn-resume:hover::before {
+            left: 0;
+        }
+
+        .btn-resume i {
+            margin-right: 0.8rem;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .btn-resume:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Subjects Section */
+        .subjects-section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--primary);
+            font-size: 2.2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .subjects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .subject-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: fadeInUp 0.8s ease-out;
+            animation-fill-mode: backwards;
+            border-top: 4px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .subject-card:nth-child(1) { animation-delay: 0.1s; }
+        .subject-card:nth-child(2) { animation-delay: 0.2s; }
+        .subject-card:nth-child(3) { animation-delay: 0.3s; }
+        .subject-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .subject-header {
+            padding: 1.5rem;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .subject-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+            color: var(--accent);
+        }
+
+        .subject-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .subject-body {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .subject-info {
+            margin-bottom: 1.5rem;
+            color: #555;
+            flex-grow: 1;
+        }
+
+        .subject-info p {
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .subject-info i {
+            margin-right: 0.7rem;
+            color: var(--primary);
+            min-width: 20px;
+        }
+
+        .btn-view {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn-view::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn-view:hover {
+            color: var(--dark);
+        }
+
+        .btn-view:hover::before {
+            left: 0;
+        }
+
+        .btn-view i {
+            margin-left: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .btn-view:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary) 0%, #8d1e38 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .faculty-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-name::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .education {
+                text-align: left;
+            }
+            
+            .resume-btn-container {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(157, 34, 53, 0.95);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem 0;
+                transition: var(--transition);
+                backdrop-filter: blur(5px);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            
+            .nav-links a {
+                font-size: 1.3rem;
+            }
+
+            .profile-name {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-name {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .subject-card {
+                min-width: 100%;
+            }
+            
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .faculty-profile {
+                padding: 0 1rem;
+                margin: 2rem auto;
+            }
+            
+            .education {
+                padding: 1.5rem;
+            }
+            
+            .btn-resume {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo"><i class="fas fa-graduation-cap"></i>Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#subjects"><i class="fas fa-book"></i> Subjects</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Faculty Profile Section -->
+    <section class="faculty-profile">
+        <div class="profile-left">
+            <h1 class="profile-name">BONDADA SAVITHRI</h1>
+            <p style="font-size: 1.2rem; color: var(--gray); margin-bottom: 1.5rem;">
+               Assistant Professors|Department of Electronics & Communications Engineering
+            </p>
+            <div class="education">
+                <h2><i class="fas fa-user-graduate"></i> Education</h2>
+                <div class="education-item">
+                    <h3>M. Tech</h3>
+                </div>
+            </div>
+            
+            <!-- Resume Button -->
+            <div class="resume-btn-container">
+                <a href="https://diet.ac.in/wp-content/uploads/2025/06/Savithri_singlepage_resume-1-1.pdf" class="btn-resume" target="_blank">
+                    <i class="fas fa-file-pdf"></i>  View Profile 
+                </a>
+            </div>
+        </div>
+        <div class="profile-right">
+            <div class="profile-img">
+                <img src="./img/savithri.jpg" alt="Dr. Vamshi Krishna">
+            </div>
+        </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section id="subjects" class="subjects-section">
+        <h2 class="section-title">Subjects</h2>
+        <div class="subjects-container">
+            <!-- Subject Card 1 -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h3 class="subject-title">Digital Signal Processing</h3>
+                </div>
+                <div class="subject-body">
+                    <div class="subject-info">
+                        <p><i class="fas fa-book"></i> Course Code: CS-501</p>
+                        <p><i class="fas fa-clock"></i> Semester: Spring 2023</p>
+                        <p><i class="fas fa-users"></i> Enrolled: 42 students</p>
+                        <p><i class="fas fa-star"></i> Rating: 4.8/5.0</p>
+                    </div>
+                    <a href="" class="btn-view" target="_blank">
+                        View Details <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Subject Card 2 -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">
+                        <i class="fas fa-drone"></i>
+                    </div>
+                    <h3 class="subject-title">BASICS OF UAV</h3>
+                </div>
+                <div class="subject-body">
+                    <div class="subject-info">
+                        <p><i class="fas fa-book"></i> Course Code: CS-502</p>
+                        <p><i class="fas fa-clock"></i> Semester: Fall 2023</p>
+                        <p><i class="fas fa-users"></i> Enrolled: 56 students</p>
+                        <p><i class="fas fa-star"></i> Rating: 4.7/5.0</p>
+                    </div>
+                    <a href="" class="btn-view" target="_blank">
+                        View Details <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Subject Card 3 -->
+            <div class="subject-card">
+                <div class="subject-header">
+                    <div class="subject-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="subject-title">DIGITAL SIGNAL PROCESSING</h3>
+                </div>
+                <div class="subject-body">
+                    <div class="subject-info">
+                        <p><i class="fas fa-book"></i> Course Code: CS-301</p>
+                        <p><i class="fas fa-clock"></i> Semester: Fall 2023</p>
+                        <p><i class="fas fa-users"></i> Enrolled: 38 students</p>
+                        <p><i class="fas fa-star"></i> Rating: 4.6/5.0</p>
+                    </div>
+                    <a href="" class="btn-view">
+                        View Details <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <h3>BONDADA SAVITHRI</h3>
+        <p>Assistant Professors</p>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-researchgate"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+        </div>
+        
+        <p>&copy; 2023 Faculty Portfolio | Department of Electronics & Communications Engineering</p>
+        <p>DIET</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.subject-card, .section-title, .faculty-profile');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Initialize animations
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
